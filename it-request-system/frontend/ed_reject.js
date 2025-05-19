@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.textContent = "Submitting...";
 
     try {
-      const response = await fetch(`http://localhost:5000/api/requests/${requestId}/status`, {
+      const response = await fetch(`https://jpl-final.onrender.com/api/requests/${requestId}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
