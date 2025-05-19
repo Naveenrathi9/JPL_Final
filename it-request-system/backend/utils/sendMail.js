@@ -73,13 +73,13 @@ const sendApprovalMail = async (requestData, approvalLevel) => {
   const mailOptions = {
     from: `"IT Request System" <${process.env.EMAIL_USER}>`,
     to: requestData.email, // User's email
-    subject: `✅ Request Approved by ${approvalLevel.toUpperCase()}`,
+    subject: `✅ Request Approved by ${approvalLevel.toUpperCase()=="ED"?"Plant Head":approvalLevel.toUpperCase()}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; background-color: #f5f7fa; padding: 40px;">
         <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px;">
           <h2 style="color: #28a745; margin-bottom: 20px;">Request Approved</h2>
           <p style="font-size: 15px; color: #444; line-height: 1.6;">
-            Your IT equipment request for <strong>${requestData.item}</strong> has been approved by the ${approvalLevel.toUpperCase()}.
+            Your IT equipment request for <strong>${requestData.item}</strong> has been approved by the ${approvalLevel.toUpperCase()=="ED"?"Plant Head":approvalLevel.toUpperCase()}.
           </p>
           <p style="font-size: 15px; color: #444; line-height: 1.6;">
             <strong>Request Details:</strong><br>
@@ -104,13 +104,13 @@ const sendRejectionMail = async (requestData, rejectionLevel) => {
   const mailOptions = {
     from: `"IT Request System" <${process.env.EMAIL_USER}>`,
     to: requestData.email, // User's email
-    subject: `❌ Request Rejected by ${rejectionLevel.toUpperCase()}`,
+    subject: `❌ Request Rejected by ${rejectionLevel.toUpperCase()=="ED"?"Plant Head":rejectionLevel.toUpperCase()}`,
     html: `
       <div style="font-family: 'Segoe UI', sans-serif; background-color: #f5f7fa; padding: 40px;">
         <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 30px; border: 1px solid #e0e0e0; border-radius: 8px;">
           <h2 style="color: #dc3545; margin-bottom: 20px;">Request Rejected</h2>
           <p style="font-size: 15px; color: #444; line-height: 1.6;">
-            Your IT equipment request for <strong>${requestData.item}</strong> has been rejected by the ${rejectionLevel.toUpperCase()}.
+            Your IT equipment request for <strong>${requestData.item}</strong> has been rejected by the ${rejectionLevel.toUpperCase()=="ED"?"Plant Head":rejectionLevel.toUpperCase()}.
           </p>
           <p style="font-size: 15px; color: #444; line-height: 1.6;">
             <strong>Request Details:</strong><br>
@@ -121,7 +121,7 @@ const sendRejectionMail = async (requestData, rejectionLevel) => {
             Reason for Rejection: ${requestData.comments[rejectionLevel.toLowerCase()] || 'Not specified'}<br>
           </p>
           <p style="font-size: 15px; color: #444; line-height: 1.6; margin-top: 25px;">
-            Please contact your ${rejectionLevel.toUpperCase()} for more information.
+            Please contact your ${rejectionLevel.toUpperCase()=="ED"?"Plant Head":rejectionLevel.toUpperCase()} for more information.
           </p>
         </div>
       </div>

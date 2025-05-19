@@ -93,11 +93,11 @@ const handleApproval = async (req, res) => {
     }
     if (type === "ed") {
       if (request.status.hod !== "approved") {
-        return res.status(400).send("HOD must approve before ED");
+        return res.status(400).send("HOD must approve before Plant Head");
       }
     }
     if (type === "hr" && request.item === "Printer" && request.status.ed !== "approved") {
-      return res.status(400).send("ED must approve before HR for Printer requests");
+      return res.status(400).send("Plant Head must approve before HR for Printer requests");
     }
 
     // Update the request status and mark as actioned via email
@@ -155,7 +155,7 @@ const handleApproval = async (req, res) => {
             Request ${status === "approved" ? "Approved" : "Rejected"}
           </h2>
           <p style="font-size: 16px; color: #555;">
-            <strong>${type.toUpperCase()}</strong> has 
+            <strong>${type.toUpperCase()=="ED"?"Plant Head":type.toUpperCase()}</strong> has 
             ${status === "approved" ? "approved" : "rejected"} the request.
           </p>
           <div style="margin-top: 30px;">
@@ -205,7 +205,7 @@ const updateRequestStatus = async (req, res) => {
       return res.status(400).json({ error: "HOD must approve before HR" });
     }
     if (role === "hr" && request.item === "Printer" && request.status.ed !== "approved") {
-      return res.status(400).json({ error: "ED must approve before HR for Printer requests" });
+      return res.status(400).json({ error: "Plant Head must approve before HR for Printer requests" });
     }
     if (role === "ithod" && request.status.hr !== "approved") {
       return res.status(400).json({ error: "HR must approve before ITHOD" });

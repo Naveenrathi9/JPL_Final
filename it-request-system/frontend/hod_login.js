@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitButton.disabled = true;
 
     // Hardcoded HR credentials
-    if (username === "456" && password === "456" || username==="naveenrathi556@gmail.com" && password==="111"|| username==="hod@example.com" && password==="111") {
+    if (username === "shivanshrawat2003@gmail.com" && password === "111" || username==="naveenrathi556@gmail.com" && password==="111"|| username==="hod@example.com" && password==="111") {
       messageDiv.textContent = "Login successful! Redirecting...";
       messageDiv.className = "login-message success";
 
